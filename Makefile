@@ -43,6 +43,8 @@ $(NAME)		:	$(OBJS)
 			@echo "$(GREEN) Build complete!$(RESET)"
 			@echo "$(GREEN)==========================$(RESET)"
 			
+printf		:	$(LIBFTNAME)
+
 $(LIBFTNAME)	:	$(OBJS)
 			@echo "$(GREEN)==========================$(RESET)"
 			@echo "$(GREEN) Building $(MAGENTA)libft_printf$(GREEN)...$(RESET)"
