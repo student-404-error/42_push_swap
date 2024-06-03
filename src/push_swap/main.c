@@ -6,13 +6,16 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:50:32 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/03 17:51:10 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/03 18:22:30 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 int	main(int ac, char **av)
 {
 	(void) ac;
 	(void) av;
+	push_swap();
 	return (0);
 }

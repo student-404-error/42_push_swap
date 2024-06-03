@@ -6,8 +6,13 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:08:56 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/03 17:09:10 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/03 18:22:10 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	push_swap(void);
+#include "push_swap.h"
+
+void	push_swap(void)
+{
+	write(1, "Hello\n", 6);
+}
