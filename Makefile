@@ -11,8 +11,7 @@ RESET		:=	\033[0m
 NAME		=	push_swap
 
 SRC_DIR		=	./src/push_swap
-SRC		=	main.c	\
-			push_swap.c
+SRCS		=	$(wildcard $(SRC_DIR)/*.c)
 
 LIBFTNAME	=	libftprintf.a
 LIBFT_PATH	=	./src/ft_printf
@@ -21,10 +20,7 @@ LIBFT_ONLY	=	libft.a
 LIBFT_ONLY_PATH	=	./src/libft
 
 CC		=	cc
-CFLAGS		=	-Wall -Werror -Wextra
-
-
-SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
+CFLAGS		=	-Wall -Werror -Wextra -g
 
 OBJS		=	$(SRCS:.c=.o)
 
@@ -43,7 +39,7 @@ $(NAME)		:	$(OBJS)
 			@echo "$(GREEN) Build complete!$(RESET)"
 			@echo "$(GREEN)==========================$(RESET)"
 			
-printf		:	$(LIBFTNAME)
+pr		:	$(LIBFTNAME)
 
 $(LIBFTNAME)	:	$(OBJS)
 			@echo "$(GREEN)==========================$(RESET)"

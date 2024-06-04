@@ -6,13 +6,32 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:08:56 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/03 18:22:10 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/04 20:32:58 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "../libft/libft.h"
+#include "../ft_printf/ft_printf.h"
 
-void	push_swap(void)
+void	pr_lst(t_list *lst)
 {
-	write(1, "Hello\n", 6);
+	t_list	*pr;
+
+	pr = lst;
+	while (pr)
+	{
+		ft_printf("%p\n", pr->content);
+		pr = pr->next;
+	}
+}
+void	push_swap(t_list **a, t_list **b)
+{
+	move_sa(a);
+	move_sb(b);
+	move_pa(a, b);
+	move_pa(a, b);
+	move_pb(b, a);
+	move_pb(b, a);
+	move_pb(b, a);
 }

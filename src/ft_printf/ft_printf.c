@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 19:19:11 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/03 16:41:08 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/04 14:12:28 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,4 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(args);
 	return (len);
-}
-
-int	main(void)
-{
-	ft_printf("%s", "hello");
-	return (0);
 }
