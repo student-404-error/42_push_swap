@@ -10,6 +10,8 @@ RESET		:=	\033[0m
 
 NAME		=	push_swap
 
+INCLUDES	=	./include
+
 SRC_DIR		=	./src/push_swap
 SRCS		=	$(wildcard $(SRC_DIR)/*.c)
 
@@ -20,7 +22,7 @@ LIBFT_ONLY	=	libft.a
 LIBFT_ONLY_PATH	=	./src/libft
 
 CC		=	cc
-CFLAGS		=	-Wall -Werror -Wextra -g
+CFLAGS		=	-Wall -Werror -Wextra -g -I$(INCLUDES)
 
 OBJS		=	$(SRCS:.c=.o)
 

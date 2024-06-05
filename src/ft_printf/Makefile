@@ -6,11 +6,12 @@ SRCS		=	ft_printf.c		\
 
 NAME		=	libftprintf.a
 
+INCLUDES	=	../../include
 LIBFTNAME	=	libft.a
 LIBFT_PATH	=	../libft
 
 CC		=	cc
-CFLAGS		=	-Wall -Werror -Wextra -I.
+CFLAGS		=	-Wall -Werror -Wextra -I$(INCLUDES)
 
 OBJS		=	$(SRCS:.c=.o)
 

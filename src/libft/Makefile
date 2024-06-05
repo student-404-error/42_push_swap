@@ -48,9 +48,10 @@ SRCS		=	ft_atoi.c		\
 			ft_lstadd_front_bonus.c	\
 			ft_lstadd_back_bonus.c	\
 
+INCLUDES	=	../../include
 CC		=	cc
 
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -I$(INCLUDES)
 
 OBJS		=	${SRCS:.c=.o}
 
