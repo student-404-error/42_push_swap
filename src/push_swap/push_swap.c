@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:08:56 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/04 20:32:58 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:38:46 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void	pr_lst(t_list *lst)
 }
 void	push_swap(t_list **a, t_list **b)
 {
-	move_sa(a);
-	move_sb(b);
-	move_pa(a, b);
-	move_pa(a, b);
-	move_pb(b, a);
-	move_pb(b, a);
-	move_pb(b, a);
+	move_swap(a);
+	move_swap(b);
+	move_push(a, b);
+	move_push(a, b);
+	move_push(b, a);
+	move_push(b, a);
+	move_rotate(a);
 }

@@ -6,38 +6,26 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:59:46 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/04 19:01:12 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:44:41 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 
-void	move_sa(t_list **a)
+void	move_swap(t_list **stack)
 {
 	t_list	*tmp;
 
-	if (*a == NULL || (*a)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
-	tmp = (*a)->next;
-	(*a)->next = tmp->next;
-	tmp->next = *a;
-	*a = tmp;
+	tmp = (*stack)->next;
+	(*stack)->next = tmp->next;
+	tmp->next = *stack;
+	*stack = tmp;
 }
 
-void	move_sb(t_list **b)
+void	move_ss(t_list *a_stack, t_list *b_stack)
 {
-	t_list	*tmp;
-
-	if (*b == NULL || (*b)->next == NULL)
-		return ;
-	tmp = (*b)->next;
-	(*b)->next = tmp->next;
-	tmp->next = *b;
-	*b = tmp;
-}
-
-void	move_ss(t_list *a, t_list *b)
-{
-	move_sa(&a);
-	move_sb(&b);
+	move_swap(&a_stack);
+	move_swap(&b_stack);
 }

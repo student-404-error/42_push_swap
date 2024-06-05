@@ -6,36 +6,20 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:01:30 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/04 20:15:19 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:35:39 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 
-void	move_pa(t_list **a, t_list **b)
+void	move_push(t_list **to_stack, t_list **from_stack)
 {
 	t_list	*node;
-	t_list	*tmp;
 
-	if (*b == NULL)
+	if (*from_stack == NULL)
 		return ;
-	node = ft_lstnew((*b)->content);
-	tmp = *b;
-	*b = (*b)->next;
-	free(tmp);
-	ft_lstadd_front(a, node);
-}
-
-void	move_pb(t_list **b, t_list **a)
-{
-	t_list	*node;
-	t_list	*tmp;
-
-	if (*a == NULL)
-		return ;
-	node = ft_lstnew((*a)->content);
-	tmp = *a;
-	*a = (*a)->next;
-	free(tmp);
-	ft_lstadd_front(b, node);
+	node = *from_stack;
+	*from_stack = (*from_stack)->next;
+	node->next = NULL;
+	ft_lstadd_front(to_stack, node);
 }
