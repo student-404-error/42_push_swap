@@ -10,3 +10,6 @@ Just writing my algo and thinking.
 ## Start
 1. Searching which func use
 2. Thinking algo
+
+## Test
+1. ./push_swap 01 02 03 030
