@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:19:25 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/05 15:44:15 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/05 20:43:56 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
 
-void	push_swap(t_list **a, t_list **b);
+typedef struct	s_stack
+{
+	t_list	*top;
+	t_list	*bottom;
+	int	max;
+	int	min;
+}	t_stack;
+void	push_swap(t_list **a_stack, t_list **b_stack);
 void	move_swap(t_list **stack);
 void	move_ss(t_list **a_stack, t_list **b_stack);
 void	move_push(t_list **to_stack, t_list **from_stack);
