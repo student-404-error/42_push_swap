@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 #include "ft_printf.h"
-#include "../libft/libft.h"
+#include "libft.h"
 
 int	ft_format(va_list args, char c)
 {

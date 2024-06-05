@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "../libft/libft.h"
-#include "../ft_printf/ft_printf.h"
+#include "libft.h"
+#include "ft_printf.h"
 
 void	pr_lst(t_list *lst)
 {

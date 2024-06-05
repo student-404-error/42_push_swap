@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "../libft/libft.h"
+#include "libft.h"
 
 void	ft_recu_nbr(char *result, int i, unsigned long nbr, char *hexa)
 {

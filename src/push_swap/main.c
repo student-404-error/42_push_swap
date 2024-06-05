@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "../ft_printf/ft_printf.h"
-#include "../libft/libft.h"
+#include "ft_printf.h"
+#include "libft.h"
 void	ft_free(t_list *stack)
 {
 	t_list	*node;
