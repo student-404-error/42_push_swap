@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:08:56 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/05 20:43:41 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/07 20:19:00 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ void	pr_lst(t_list *lst)
 	t_list	*pr;
 
 	pr = lst;
+	ft_printf("================\n");
 	while (pr)
 	{
-		ft_printf("%p\n", pr->content);
+		ft_printf("%d\n", pr->content);
 		pr = pr->next;
 	}
+	ft_printf("================\n");
 }
 
 
@@ -57,15 +59,48 @@ t_stack	*ft_new_stack(t_list *lst)
 void	push_swap(t_list **a, t_list **b)
 {
 	// stack을 선언 후 max min 먼저 설정,
-	t_stack	*a_stack = NULL;
+	t_stack	*a_stack;
 	//t_stack	*b_stack = NULL;
 
 	a_stack = ft_new_stack(*a);
 	ft_printf("%d\n", a_stack->min);
 	ft_printf("%d\n", a_stack->max);
+	ft_printf("%d\n", a_stack->top->content);
+	ft_printf("%d\n", a_stack->bottom->content);
+	pr_lst(*a);
+	int	min_node;
+	int	cnt = 0;
+	t_list	*ptr;
+	ptr = *a;
+	min_node = a_stack->min;
+	while (ptr->content > min_node)
+	{
+		ptr = ptr->next;
+		cnt++;
+	}
+	if (cnt > (ft_lstsize(*a) / 2))
+	{
+		while (a_stack->top->content != a_stack->min)
+		{
+			move_reverse_rotate(a, &a_stack);
+			ft_printf("rra\n");
+		}
+	}
+	else
+	{
+		while (a_stack->top->content != a_stack->min)
+		{
+			move_rotate(a, &a_stack);
+			ft_printf("ra\n");
+		}
+	}
+	pr_lst(*a);
 	(void) b;
 	free(a_stack);
 	a_stack = NULL;
+
+//	if (a_stack->top->content >
+//	while (a_stack->top->content 
 	// 경우의 수
 	// b가 정렬되어있고,
 	// b_max 보다 a의 모든 노드가 크고,
@@ -79,18 +114,27 @@ void	push_swap(t_list **a, t_list **b)
 	//
 	//
 	// a에서 가장 큰 값을 찾는다.
-	// a_max가 b의 원소들보다 작다면,	<<<<<
-	// 	b_bottom을 b_min으로 설정 후 pb
-	// 혹은	b_top을 b_min으로 설정 후 pb
-	// a_max가 b의 원소들보다 크다면,	<<<<<
-	// 	b_bottom을 b_max로 설정 후 pb
-	// 혹은	b_top을 b_max로 설정 후 pb
-	// a_max가 b의 원소들 사이에 있다면,	<<<<<
-	// 	b_top은 a_node보다 작고, 
-	// 	b_bottom은 a_node보다 크게 설정 후 pb
+	// if a_top <= b_min
+	// 	b_bottom = b_min
+	// 	pb
+	// 	<OR>
+	// 	b_top = b_min
+	// 	pb
+	// if a_top >= b_max
+	// 	b_bottom = b_max
+	// 	pb
+	// 	<OR>
+	// 	b_top=  b_max
+	// 	pb
+	// if b_min <= a_top <= b_max
+	// 	SET b_top < a_top <AND> b_bottom >= a_top
+	// 	pb
 	// rb, rrb Choose Guide when a_node is btw b_min and b_max
-	// a_node보다 큰 숫자들을 count함.
-	// b_top부터 bottom까지 내려가면서 a_node보다 작은 순간 break ;
-	// count가 b의 총 원소 갯수 / 2 보다 크다면 rrb
-	// 아니라면 rb
+	// counting numbers bigger than a_top in b_stack.
+	// if count_node < a_top
+	// 	break;
+	// if count > b_stack_size / 2
+	// 	rrb
+	// else
+	// 	rb
 }

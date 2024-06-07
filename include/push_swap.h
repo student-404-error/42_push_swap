@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:19:25 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/05 21:12:55 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/07 20:24:24 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	push_swap(t_list **a_stack, t_list **b_stack);
 void	move_swap(t_list **stack);
 void	move_ss(t_list **a_stack, t_list **b_stack);
 void	move_push(t_list **to_stack, t_list **from_stack);
-void	move_rotate(t_list **stack);
+void	move_rotate(t_list **lst, t_stack **stack);
 void	move_rr(t_list **a_stack, t_list **b_stack);
-void	move_reverse_rotate(t_list **stack);
+void	move_reverse_rotate(t_list **lst, t_stack **stack);
 void	move_rrr(t_list **a_stack, t_list **b_stack);
 #endif
