@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:08:56 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/08 03:01:24 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/08 04:49:15 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,19 +144,22 @@ void	push_swap(t_list **a, t_list **b)
 	while (size_a)
 	{
 		count = 0;
-		ptr = *b;
+//		ft_printf("%d %d %d\n", b_stack->min, a_stack->top->content, b_stack->max);
 		if (a_stack->top->content >= b_stack->min && a_stack->top->content <= b_stack->max)
 		{
-			while (ptr && a_stack->top->content < ptr->content)
+			if (a_stack->top->content > b_stack->bottom->content)
+				change_state(b, &b_stack);
+			ptr = *b;
+			while (a_stack->top->content < ptr->content)
 			{
-//				ft_printf("comp-->%d > %d\n", a_stack->top->content, ptr->content);
+//				ft_printf("comp-->%d < %d\n", a_stack->top->content, ptr->content);
 				count++;
 				ptr = ptr->next;
 			}
 //			ft_printf("====count: %d\n", count);
 			if (count > (ft_lstsize(*b) / 2))
 			{
-				while (count < ft_lstsize(*b) - 1)
+				while (count < ft_lstsize(*b))
 				{
 					move_reverse_rotate(b, &b_stack);
 					ft_printf("rrb\n");
@@ -174,11 +177,16 @@ void	push_swap(t_list **a, t_list **b)
 					count--;
 				}
 			}
+			move_push(b, a, &b_stack, &a_stack);
+			ft_printf("pb\n");
 		}
 		else
+		{
 			change_state(b, &b_stack);
-		move_push(b, a, &b_stack, &a_stack);
-		ft_printf("pb\n");
+			move_push(b, a, &b_stack, &a_stack);
+			move_rotate(b, &b_stack);
+			ft_printf("pb\nrb\n");
+		}
 //		status_stack(a_stack, "a_stack");
 //		pr_lst(*b, "push b_list");
 		size_a--;
@@ -197,7 +205,7 @@ void	push_swap(t_list **a, t_list **b)
 		ft_printf("pa\n");
 		last--;
 	}
-	pr_lst(*a, "a_list");
+//	pr_lst(*a, "a_list");
 // free
 	free(a_stack);
 	free(b_stack);
