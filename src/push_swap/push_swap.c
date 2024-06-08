@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:08:56 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/07 20:19:00 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/08 03:01:24 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,24 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-void	pr_lst(t_list *lst)
+void	pr_lst(t_list *lst, char *title)
 {
 	t_list	*pr;
+	int	line;
 
 	pr = lst;
-	ft_printf("================\n");
+	line = ft_printf("=====%s=====\n", title) - 1;
 	while (pr)
 	{
 		ft_printf("%d\n", pr->content);
 		pr = pr->next;
 	}
-	ft_printf("================\n");
+	while (line)
+	{
+		ft_printf("=");
+		line--;
+	}
+	ft_printf("\n");
 }
 
 
@@ -38,6 +44,14 @@ t_stack	*ft_new_stack(t_list *lst)
 	stk = malloc(sizeof(t_stack));
 	if (stk == NULL)
 		return (NULL);
+	if (lst == NULL)
+	{
+		stk->min = INT_MAX;
+		stk->max = INT_MIN;
+		stk->top = NULL;
+		stk->bottom = NULL;
+		return (stk);
+	}
 	min = lst->content;
 	max = lst->content;
 	stk->top = lst;
@@ -56,48 +70,139 @@ t_stack	*ft_new_stack(t_list *lst)
 	return (stk);
 }
 
-void	push_swap(t_list **a, t_list **b)
+void	status_stack(t_stack *stack, char *title)
 {
-	// stack을 선언 후 max min 먼저 설정,
-	t_stack	*a_stack;
-	//t_stack	*b_stack = NULL;
+	ft_printf("=====%s=====\n", title);
+	ft_printf("min: %d\n", stack->min);
+	ft_printf("max: %d\n", stack->max);
+	if (stack->top == NULL)
+		ft_printf("top: NULL\n");
+	else	
+		ft_printf("top: %d\n", stack->top->content);
+	if (stack->bottom == NULL)
+		ft_printf("bot: NULL\n");
+	else
+		ft_printf("bot: %d\n", stack->bottom->content);
+}
 
-	a_stack = ft_new_stack(*a);
-	ft_printf("%d\n", a_stack->min);
-	ft_printf("%d\n", a_stack->max);
-	ft_printf("%d\n", a_stack->top->content);
-	ft_printf("%d\n", a_stack->bottom->content);
-	pr_lst(*a);
+void	change_state(t_list **lst, t_stack **stk)
+{
 	int	min_node;
-	int	cnt = 0;
+	int	cnt;
 	t_list	*ptr;
-	ptr = *a;
-	min_node = a_stack->min;
+
+	ptr = *lst;
+	min_node = (*stk)->min;
+	cnt = 0;
 	while (ptr->content > min_node)
 	{
 		ptr = ptr->next;
 		cnt++;
 	}
-	if (cnt > (ft_lstsize(*a) / 2))
+	if (cnt > (ft_lstsize(*lst) / 2))
 	{
-		while (a_stack->top->content != a_stack->min)
+		while ((*stk)->bottom->content != (*stk)->min)
 		{
-			move_reverse_rotate(a, &a_stack);
-			ft_printf("rra\n");
+			move_reverse_rotate(lst, stk);
+			ft_printf("rrb\n");
 		}
 	}
 	else
 	{
-		while (a_stack->top->content != a_stack->min)
+		while ((*stk)->bottom->content != (*stk)->min)
 		{
-			move_rotate(a, &a_stack);
-			ft_printf("ra\n");
+			move_rotate(lst, stk);
+			ft_printf("rb\n");
 		}
 	}
-	pr_lst(*a);
-	(void) b;
+
+}
+
+void	push_swap(t_list **a, t_list **b)
+{
+	// stack을 선언 후 max min 먼저 설정,
+	t_stack	*a_stack;
+	t_stack	*b_stack;
+
+	// initialize
+	a_stack = ft_new_stack(*a);
+	b_stack = ft_new_stack(*b);
+//	pr_lst(*a, "a_list");
+	// print status
+//	status_stack(a_stack, "a_stack");
+//	status_stack(b_stack, "b_stack");
+	// commands
+	move_push(b, a, &b_stack, &a_stack);
+	move_push(b, a, &b_stack, &a_stack);
+	ft_printf("pb\n");
+	ft_printf("pb\n");
+	int count = 0;
+	t_list	*ptr;
+	ptr = *b;
+	int	size_a = ft_lstsize(*a);
+//	size_a = 5;
+	while (size_a)
+	{
+		count = 0;
+		ptr = *b;
+		if (a_stack->top->content >= b_stack->min && a_stack->top->content <= b_stack->max)
+		{
+			while (ptr && a_stack->top->content < ptr->content)
+			{
+//				ft_printf("comp-->%d > %d\n", a_stack->top->content, ptr->content);
+				count++;
+				ptr = ptr->next;
+			}
+//			ft_printf("====count: %d\n", count);
+			if (count > (ft_lstsize(*b) / 2))
+			{
+				while (count < ft_lstsize(*b) - 1)
+				{
+					move_reverse_rotate(b, &b_stack);
+					ft_printf("rrb\n");
+//					pr_lst(*b, "rrb b_list");
+					count++;
+				}
+			}
+			else
+			{
+				while (count)
+				{
+					move_rotate(b, &b_stack);
+					ft_printf("rb\n");
+//					pr_lst(*b, "rb b_list");
+					count--;
+				}
+			}
+		}
+		else
+			change_state(b, &b_stack);
+		move_push(b, a, &b_stack, &a_stack);
+		ft_printf("pb\n");
+//		status_stack(a_stack, "a_stack");
+//		pr_lst(*b, "push b_list");
+		size_a--;
+	}
+//	pr_lst(*b, "b_list");
+//	move_rotate(b, &b_stack);
+//	move_rotate(b, &b_stack);
+//	pr_lst(*a, "a_list");
+//	status_stack(a_stack, "a_stack");
+//	status_stack(b_stack, "b_stack");
+	change_state(b, &b_stack);
+	int	last = ft_lstsize(*b);
+	while (last)
+	{
+		move_push(a, b, &a_stack, &b_stack);
+		ft_printf("pa\n");
+		last--;
+	}
+	pr_lst(*a, "a_list");
+// free
 	free(a_stack);
+	free(b_stack);
 	a_stack = NULL;
+	b_stack = NULL;
 
 //	if (a_stack->top->content >
 //	while (a_stack->top->content 
@@ -124,12 +229,11 @@ void	push_swap(t_list **a, t_list **b)
 	// 	b_bottom = b_max
 	// 	pb
 	// 	<OR>
-	// 	b_top=  b_max
+	// 	b_top = b_max
 	// 	pb
 	// if b_min <= a_top <= b_max
 	// 	SET b_top < a_top <AND> b_bottom >= a_top
 	// 	pb
-	// rb, rrb Choose Guide when a_node is btw b_min and b_max
 	// counting numbers bigger than a_top in b_stack.
 	// if count_node < a_top
 	// 	break;
