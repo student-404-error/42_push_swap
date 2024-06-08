@@ -35,22 +35,11 @@ all		:	$(NAME)
 
 $(NAME)		:	$(OBJS)
 			@echo "$(GREEN)==========================$(RESET)"
-			@echo "$(GREEN) Building $(CYAN)push_swap $(GREEN)program...$(RESET)"
-			@make -C $(LIBFT_ONLY_PATH)
-			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_ONLY_PATH)/$(LIBFT_ONLY) -o $(NAME)
-			@echo "$(GREEN) Build complete!$(RESET)"
-			@echo "$(GREEN)==========================$(RESET)"
-			
-pr		:	$(LIBFTNAME)
-
-$(LIBFTNAME)	:	$(OBJS)
-			@echo "$(GREEN)==========================$(RESET)"
 			@echo "$(GREEN) Building $(MAGENTA)libft_printf$(GREEN)...$(RESET)"
 			@make -C $(LIBFT_PATH)
 			@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_PATH)/$(LIBFTNAME) -o $(NAME)
 			@echo "$(GREEN) Build complete!$(RESET)"
 			@echo "$(GREEN)==========================$(RESET)"
-
 
 clean		:
 			@echo "$(RED)===========$(WHITE)clean$(RED)===========$(RESET)"
