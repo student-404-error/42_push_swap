@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:50:32 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/15 16:15:16 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/15 17:36:40 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,19 @@ int	main(int ac, char **av)
 		ft_lstadd_back(&a, node);
 		i++;
 	}
-	push_swap(&a, &b);
+	//push_swap(&a, &b);
+	ft_printf("con: %d\n", a->content);
+	ft_printf("idx: %d\n", a->idx);
+	ft_printf("lis: %d\n", a->lis);
+	ft_printf("pre: %d\n", a->prev);
+	ft_printf("nex: %d\n", a->next->content);
+	ft_printf("nex:pre: %d\n", a->next->prev->content);
+	find_lis(a, ft_lstsize(a));
+	while (a)
+	{
+		ft_printf("lis: %d\n", a->lis);
+		a = a->next;
+	}
 	ft_free(a);
 	ft_free(b);
 	return (0);
