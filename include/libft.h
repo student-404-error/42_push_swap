@@ -6,8 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:51:36 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/08 02:29:37 by seong-ki         ###   ########.fr       */
-/*                                                                            */
+/*   Updated: 2024/06/08 02:29:37 by seong-ki         ###   ########.fr       */                                                                           */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
@@ -20,6 +19,10 @@
 typedef struct s_list
 {
 	int	content;
+  int lis;
+  int idx;
+  int move;
+  struct s_list *prev;
 	struct s_list	*next;
 }	t_list;
 
