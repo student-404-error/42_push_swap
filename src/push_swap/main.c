@@ -6,13 +6,14 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:50:32 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/05 20:33:49 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/15 16:15:16 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf.h"
 #include "libft.h"
+
 void	ft_free(t_list *stack)
 {
 	t_list	*node;
