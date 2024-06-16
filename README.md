@@ -29,3 +29,9 @@ Just writing my algo and thinking.
                  less than 8500: 3  
                  less than 10000: 2  
                  less than 11500: 1  
+
+## todo
+- push, rotate, swap testing.
+- 범위별로 b로 넘기기 구현
+- a로 넘기기 구현
+- [선택] 넘기기에 드는 최저 비용 계산 함수 구현
