@@ -12,20 +12,28 @@
 
 #include "libft.h"
 
-void	move_swap(t_list **stack)
+void	move_swap(t_list **lst, t_stack **stk)
 {
 	t_list	*tmp;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (*lst == NULL || (*lst)->next == NULL)
 		return ;
-	tmp = (*stack)->next;
-	(*stack)->next = tmp->next;
-	tmp->next = *stack;
-	*stack = tmp;
+	tmp = (*lst)->next;
+	tmp->prev = NULL;
+	(*lst)->next = tmp->next;
+	if (tmp->next)
+        tmp->next->prev = *lst;
+	tmp->next = *lst;
+	(*lst)-prev = tmp;
+	*lst = tmp;
+	(*stk)->top = *lst;
+    if ((*stk)->bottom == (*lst)->next)
+		(*stk)->bottom = (*lst)->next;
 }
-
+/*
 void	move_ss(t_list *a_stack, t_list *b_stack)
 {
 	move_swap(&a_stack);
 	move_swap(&b_stack);
 }
+*/
