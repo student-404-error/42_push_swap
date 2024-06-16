@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 22:34:09 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/07 20:24:33 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/16 19:32:46 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	move_rotate(t_list **lst, t_stack **stack)
 		return ;
 	first = *lst;
 	*lst = first->next;
+	first->prev = NULL;
 	(*stack)->top = *lst;
 	first->next = NULL;
 	(*stack)->bottom = first;
@@ -33,6 +34,7 @@ void	move_rr(t_list **a_stack, t_list **b_stack)
 	move_rotate(b_stack);
 }
 */
+
 void	move_reverse_rotate(t_list **lst, t_stack **stack)
 {
 	t_list	*last;
@@ -42,6 +44,7 @@ void	move_reverse_rotate(t_list **lst, t_stack **stack)
 	last = *lst;
 	while (last->next->next)
 		last = last->next;
+	last->prev = NULL;
 	ft_lstadd_front(lst, last->next);
 	(*stack)->top = last->next;
 	last->next = NULL;

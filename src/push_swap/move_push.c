@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:01:30 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/08 02:43:08 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/16 19:36:01 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	update_stack(t_list *origin, int flag)
 			comp = origin->content * flag;
 		origin = origin->next;
 	}
-	return (comp * flag);
+	return (comp * flag);	comp = origin->content;
 }
 
 void	move_push(t_list **to_lst, t_list **fr_lst, t_stack **to, t_stack **fr)
@@ -40,9 +40,10 @@ void	move_push(t_list **to_lst, t_list **fr_lst, t_stack **to, t_stack **fr)
 		return ;
 	node = *fr_lst;
 	*fr_lst = (*fr_lst)->next;
-	(*fr)->top = *fr_lst;
-	if (*fr_lst == NULL)
-		(*fr)->bottom = *fr_lst;
+	if (*fr_lst)
+		(*fr_lst)->prev = NULL;
+	else
+		(*fr)->bottom = NULL;
 	node->next = NULL;
 	ft_lstadd_front(to_lst, node);
 	if (node->content == (*fr)->min)
@@ -53,18 +54,7 @@ void	move_push(t_list **to_lst, t_list **fr_lst, t_stack **to, t_stack **fr)
 		(*to)->min = node->content;
 	if ((*to)->max < node->content)
 		(*to)->max = node->content;
+	(*fr)->top = *fr_lst;
 	(*to)->top = *to_lst;
 	(*to)->bottom = ft_lstlast(*to_lst);
-	/*
-	 * 나올 수 있는 경우의 수를 계산 해봅시다.
-	 * min이 push됨
-	 * 	if node == a_stack->min:
-	 * 		min 새로고침 a
-	 * max가 push됨
-	 * 	if node == a->max:
-	 * 그외 아무것도 아닌 것이 push됨
-	 *	알빠아님.
-	 *
-	 *
-	 * */
 }
