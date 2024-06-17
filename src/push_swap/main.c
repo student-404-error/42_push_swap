@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:50:32 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/16 19:20:05 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:17:21 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main(int ac, char **av)
 	t_list	*a = NULL;
 	t_list	*b = NULL;
 	t_list	*node;
+	t_stack	*a_stk;
+	t_stack	*b_stk;
 	int	i;
 
 	if (ac < 2)
@@ -53,28 +55,14 @@ int	main(int ac, char **av)
 		ft_lstadd_back(&a, node);
 		i++;
 	}
-	ft_printf("con: %d\n", a->content);
-	ft_printf("idx: %d\n", a->idx);
-	ft_printf("lis: %d\n", a->lis);
-	ft_printf("pre: %d\n", a->prev);
-	ft_printf("nex: %d\n", a->next->content);
-	ft_printf("nex:pre: %d\n", a->next->prev->content);
+	a_stk = ft_new_stack(a);
+	b_stk = ft_new_stack(b);
 	find_lis(a, ft_lstsize(a));
 	find_index(a);
-	t_list *ptr;
-	ptr = a;
-	while (ptr)
-	{
-		ft_printf("idx: %d\n", ptr->idx);
-		ptr = ptr->next;
-	}
-	//push_swap(&a, &b);
-	t_stack *a_stk;
-	ptr = a;
-	ft_printf("%d\n", ptr->content);
-	move_rotate(&a, &a_stk);
-	ptr = a;
-	ft_printf("%d\n", ptr->content);
+	status_list_and_stack(a, a_stk, "a");
+	move_push(&b, &a, &b_stk, &a_stk);
+	status_list_and_stack(a, a_stk, "a");
+	status_list_and_stack(b, b_stk, "b");
 	ft_free(a);
 	ft_free(b);
 	return (0);

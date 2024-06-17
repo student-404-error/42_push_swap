@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:08:56 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/08 04:49:15 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:18:47 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,27 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-void	pr_lst(t_list *lst, char *title)
+void	status_list_and_stack(t_list *lst, t_stack *stk, char *title)
 {
-	t_list	*pr;
 	int	line;
 
-	pr = lst;
-	line = ft_printf("=====%s=====\n", title) - 1;
-	while (pr)
+	line = ft_printf("=====%s_lst=====\n", title) - 1;
+	while (lst)
 	{
-		ft_printf("%d\n", pr->content);
-		pr = pr->next;
+		ft_printf("cont: %d\n", lst->content);
+		lst = lst->next;
 	}
+	ft_printf("=====%s_stk=====\n", title);
+	ft_printf("min: %d\n", stk->min);
+	ft_printf("max: %d\n", stk->max);
+	if (stk->top == NULL)
+		ft_printf("top: NULL\n");
+	else	
+		ft_printf("top: %d\n", stk->top->content);
+	if (stk->bottom == NULL)
+		ft_printf("bot: NULL\n");
+	else
+		ft_printf("bot: %d\n", stk->bottom->content);
 	while (line)
 	{
 		ft_printf("=");
@@ -70,21 +79,6 @@ t_stack	*ft_new_stack(t_list *lst)
 	return (stk);
 }
 
-void	status_stack(t_stack *stack, char *title)
-{
-	ft_printf("=====%s=====\n", title);
-	ft_printf("min: %d\n", stack->min);
-	ft_printf("max: %d\n", stack->max);
-	if (stack->top == NULL)
-		ft_printf("top: NULL\n");
-	else	
-		ft_printf("top: %d\n", stack->top->content);
-	if (stack->bottom == NULL)
-		ft_printf("bot: NULL\n");
-	else
-		ft_printf("bot: %d\n", stack->bottom->content);
-}
-
 void	change_state(t_list **lst, t_stack **stk)
 {
 	int	min_node;
@@ -117,7 +111,7 @@ void	change_state(t_list **lst, t_stack **stk)
 	}
 
 }
-
+/*
 void	push_swap(t_list **a, t_list **b)
 {
 	// stack을 선언 후 max min 먼저 설정,
@@ -249,4 +243,4 @@ void	push_swap(t_list **a, t_list **b)
 	// 	rrb
 	// else
 	// 	rb
-}
+}*/

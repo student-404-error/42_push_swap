@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 22:34:09 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/16 19:32:46 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:10:44 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	move_rotate(t_list **lst, t_stack **stack)
 	(void) stack;
 	*lst = first->next;
 	first->prev = NULL;
-//	(*stack)->top = *lst;
+	(*stack)->top = *lst;
 	first->next = NULL;
-//	(*stack)->bottom = first;
+	(*stack)->bottom = first;
 	ft_lstadd_back(lst, first);
 }
 /*
