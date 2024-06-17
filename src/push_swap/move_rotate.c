@@ -20,11 +20,12 @@ void	move_rotate(t_list **lst, t_stack **stack)
 	if (*lst == NULL || (*lst)->next == NULL)
 		return ;
 	first = *lst;
+	(void) stack;
 	*lst = first->next;
 	first->prev = NULL;
-	(*stack)->top = *lst;
+//	(*stack)->top = *lst;
 	first->next = NULL;
-	(*stack)->bottom = first;
+//	(*stack)->bottom = first;
 	ft_lstadd_back(lst, first);
 }
 /*

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "push_swap.h"
 
 void	move_swap(t_list **lst, t_stack **stk)
 {
@@ -24,7 +25,7 @@ void	move_swap(t_list **lst, t_stack **stk)
 	if (tmp->next)
         tmp->next->prev = *lst;
 	tmp->next = *lst;
-	(*lst)-prev = tmp;
+	(*lst)->prev = tmp;
 	*lst = tmp;
 	(*stk)->top = *lst;
     if ((*stk)->bottom == (*lst)->next)

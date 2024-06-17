@@ -61,12 +61,20 @@ int	main(int ac, char **av)
 	ft_printf("nex:pre: %d\n", a->next->prev->content);
 	find_lis(a, ft_lstsize(a));
 	find_index(a);
-	while (a)
+	t_list *ptr;
+	ptr = a;
+	while (ptr)
 	{
-		ft_printf("idx: %d\n", a->idx);
-		a = a->next;
+		ft_printf("idx: %d\n", ptr->idx);
+		ptr = ptr->next;
 	}
-	push_swap(&a, &b);
+	//push_swap(&a, &b);
+	t_stack *a_stk;
+	ptr = a;
+	ft_printf("%d\n", ptr->content);
+	move_rotate(&a, &a_stk);
+	ptr = a;
+	ft_printf("%d\n", ptr->content);
 	ft_free(a);
 	ft_free(b);
 	return (0);

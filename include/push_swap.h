@@ -24,7 +24,7 @@ typedef struct s_stack
 void	find_index(t_list *a);
 int		find_lis(t_list *a_list, int size);
 void	push_swap(t_list **a_stack, t_list **b_stack);
-void	move_swap(t_list **stack);
+void	move_swap(t_list **lst, t_stack **stk);
 void	move_ss(t_list **a_stack, t_list **b_stack);
 void	move_push(t_list **to_lst, t_list **fr_lst, t_stack **to, t_stack **fr);
 void	move_rotate(t_list **lst, t_stack **stack);
