@@ -32,7 +32,7 @@ Just writing my algo and thinking.
 
 ## todo
 - [x]push, [x]rotate, [x]swap testing.
-- 범위별로 b로 넘기기 구현
+- [x]범위별로 b로 넘기기 구현
 - lis 제외하고 넘겨야함.
 - a로 넘기기 구현
 - [선택] 넘기기에 드는 최저 비용 계산 함수 구현

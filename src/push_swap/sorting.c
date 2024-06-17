@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:08:56 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/17 16:18:47 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/17 17:20:05 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,15 @@ t_stack	*ft_new_stack(t_list *lst)
 		stk->bottom = NULL;
 		return (stk);
 	}
-	min = lst->content;
-	max = lst->content;
+	min = lst->idx;
+	max = lst->idx;
 	stk->top = lst;
 	while (lst)
 	{
-		if (lst->content > max)
-			max = lst->content;
-		if (lst->content < min)
-			min = lst->content;
+		if (lst->idx > max)
+			max = lst->idx;
+		if (lst->idx < min)
+			min = lst->idx;
 		if (lst->next == NULL)
 			stk->bottom = lst;
 		lst = lst->next;

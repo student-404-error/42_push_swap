@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:19:25 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/17 16:18:06 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/17 17:22:13 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_stack
 void	find_index(t_list *a);
 int		find_lis(t_list *a_list, int size);
 //void	push_swap(t_list **a_stack, t_list **b_stack);
+void	passing_to_b(t_list *a, t_list *b);
 void	move_swap(t_list **lst, t_stack **stk);
 void	move_ss(t_list **a_stack, t_list **b_stack);
 void	move_push(t_list **to_lst, t_list **fr_lst, t_stack **to, t_stack **fr);

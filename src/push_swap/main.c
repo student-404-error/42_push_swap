@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:50:32 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/17 16:17:21 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/17 17:22:53 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	main(int ac, char **av)
 	t_list	*a = NULL;
 	t_list	*b = NULL;
 	t_list	*node;
-	t_stack	*a_stk;
-	t_stack	*b_stk;
 	int	i;
 
 	if (ac < 2)
@@ -55,14 +53,9 @@ int	main(int ac, char **av)
 		ft_lstadd_back(&a, node);
 		i++;
 	}
-	a_stk = ft_new_stack(a);
-	b_stk = ft_new_stack(b);
 	find_lis(a, ft_lstsize(a));
 	find_index(a);
-	status_list_and_stack(a, a_stk, "a");
-	move_push(&b, &a, &b_stk, &a_stk);
-	status_list_and_stack(a, a_stk, "a");
-	status_list_and_stack(b, b_stk, "b");
+	passing_to_b(a, b);
 	ft_free(a);
 	ft_free(b);
 	return (0);
