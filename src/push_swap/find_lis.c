@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 22:14:00 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/17 20:49:40 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/18 14:50:04 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,31 +65,32 @@ static int	*initialize_result(int size, t_list *a_list, int *length)
 	return (result);
 }
 
-void	find_lis(t_list *a_list, int size)
+int	find_lis(t_list *a_list, int size)
 {
 	int		length;
 	int		*result;
+	int		len;
 	t_list	*ptr;
 
 	result = initialize_result(size, a_list, &length);
 	if (!result)
-		return ;
+		return (-1);
 	ptr = ft_lstlast(a_list);
 	while (a_list)
 	{
 		update_result_and_lis(result, a_list, &length);
 		a_list = a_list->next;
 	}
-	ft_printf("%d\n", length);
+	len = length;
 	while (ptr)
 	{
-		ft_printf("%d\n", length);
-		if (length == ptr->lis)
+		if (len == ptr->lis)
 		{
 			ptr->lis = -1;
-			length--;
+			len--;
 		}
 		ptr = ptr->prev;
 	}
 	free(result);
+	return (length);
 }
