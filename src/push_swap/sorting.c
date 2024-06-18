@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:08:56 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/17 17:20:05 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/18 21:16:56 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_stack	*ft_new_stack(t_list *lst)
 	stk->min = min;
 	return (stk);
 }
-
+/*
 void	change_state(t_list **lst, t_stack **stk)
 {
 	int	min_node;
@@ -111,53 +111,31 @@ void	change_state(t_list **lst, t_stack **stk)
 	}
 
 }
-/*
 void	push_swap(t_list **a, t_list **b)
 {
-	// stack을 선언 후 max min 먼저 설정,
-	t_stack	*a_stack;
-	t_stack	*b_stack;
-
-	// initialize
-	a_stack = ft_new_stack(*a);
-	b_stack = ft_new_stack(*b);
-//	pr_lst(*a, "a_list");
-	// print status
-//	status_stack(a_stack, "a_stack");
-//	status_stack(b_stack, "b_stack");
-	// commands
-	move_push(b, a, &b_stack, &a_stack);
-	move_push(b, a, &b_stack, &a_stack);
-	ft_printf("pb\n");
-	ft_printf("pb\n");
 	int count = 0;
 	t_list	*ptr;
 	ptr = *b;
 	int	size_a = ft_lstsize(*a);
-//	size_a = 5;
 	while (size_a)
 	{
 		count = 0;
-//		ft_printf("%d %d %d\n", b_stack->min, a_stack->top->content, b_stack->max);
 		if (a_stack->top->content >= b_stack->min && a_stack->top->content <= b_stack->max)
 		{
-			if (a_stack->top->content > b_stack->bottom->content)
-				change_state(b, &b_stack);
+//			if (a_stack->top->content > b_stack->bottom->content)
+//				change_state(b, &b_stack);
 			ptr = *b;
 			while (a_stack->top->content < ptr->content)
 			{
-//				ft_printf("comp-->%d < %d\n", a_stack->top->content, ptr->content);
 				count++;
 				ptr = ptr->next;
 			}
-//			ft_printf("====count: %d\n", count);
 			if (count > (ft_lstsize(*b) / 2))
 			{
 				while (count < ft_lstsize(*b))
 				{
 					move_reverse_rotate(b, &b_stack);
 					ft_printf("rrb\n");
-//					pr_lst(*b, "rrb b_list");
 					count++;
 				}
 			}
@@ -167,13 +145,22 @@ void	push_swap(t_list **a, t_list **b)
 				{
 					move_rotate(b, &b_stack);
 					ft_printf("rb\n");
-//					pr_lst(*b, "rb b_list");
 					count--;
 				}
 			}
 			move_push(b, a, &b_stack, &a_stack);
 			ft_printf("pb\n");
-		}
+
+
+
+
+
+
+
+
+
+
+}
 		else
 		{
 			change_state(b, &b_stack);
@@ -181,16 +168,8 @@ void	push_swap(t_list **a, t_list **b)
 			move_rotate(b, &b_stack);
 			ft_printf("pb\nrb\n");
 		}
-//		status_stack(a_stack, "a_stack");
-//		pr_lst(*b, "push b_list");
 		size_a--;
 	}
-//	pr_lst(*b, "b_list");
-//	move_rotate(b, &b_stack);
-//	move_rotate(b, &b_stack);
-//	pr_lst(*a, "a_list");
-//	status_stack(a_stack, "a_stack");
-//	status_stack(b_stack, "b_stack");
 	change_state(b, &b_stack);
 	int	last = ft_lstsize(*b);
 	while (last)
@@ -199,8 +178,6 @@ void	push_swap(t_list **a, t_list **b)
 		ft_printf("pa\n");
 		last--;
 	}
-//	pr_lst(*a, "a_list");
-// free
 	free(a_stack);
 	free(b_stack);
 	a_stack = NULL;

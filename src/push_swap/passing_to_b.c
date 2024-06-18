@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:28:43 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/18 15:48:23 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/18 22:08:29 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	push_b(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk)
 	int	max_rotate;
 //	int	lis;
 
-	cnt = 3;
+	cnt = 10;
 	size = ft_lstsize(*a);
 //	lis = find_lis(*a, size);
 //	if (lis == size)
@@ -31,9 +31,9 @@ void	push_b(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk)
 	while (cnt)
 	{
 		max_rotate = 0;
-		while (ft_lstsize(*b) < size /*- lis*/)
+		while (ft_lstsize(*b) < size/* - lis*/)
 		{
-			if ((*a)->idx <= range/* && (*a)->lis != -1*/)
+			if ((*a)->idx <= range /* &&(*a)->lis != -1*/)
 			{
 				move_push(b, a, b_stk, a_stk);
 				ft_printf("pb\n");
@@ -47,7 +47,7 @@ void	push_b(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk)
 				break ;
 			max_rotate++;
 		}
-		range += size / 3 + 1;
+		range += size / 10 + 1;
 		cnt--;
 	}
 }
@@ -60,4 +60,5 @@ void	passing_to_b(t_list *a, t_list *b)
 	a_stk = ft_new_stack(a);
 	b_stk = ft_new_stack(b);
 	push_b(&a, &b, &a_stk, &b_stk);
+	sort(&a, &b, &a_stk, &b_stk);
 }
