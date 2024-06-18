@@ -31,8 +31,12 @@ Just writing my algo and thinking.
                  less than 11500: 1  
 
 ## todo
-- [x]push, [x]rotate, [x]swap testing.
-- [x]범위별로 b로 넘기기 구현
-- lis 제외하고 넘겨야함.
-- a로 넘기기 구현
+- [x] push, [x]rotate, [x]swap testing.
+- [x] 범위별로 b로 넘기기 구현
+- [x] lis 제외하고 넘겨야함.
+- [x] a로 넘기기 구현
 - [선택] 넘기기에 드는 최저 비용 계산 함수 구현
+- 현재 100개일때 700대 -> 구역 5개로
+- 500개일때 7000대 -> 구역 8~10개로
+- 둘다 4점획득 개꿀~~
+- 아니네 500개일땐 3점...
