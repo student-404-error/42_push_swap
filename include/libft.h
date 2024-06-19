@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 16:07:23 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/15 16:08:14 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/19 14:16:52 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_list
 	int				content;
 	int				lis;
 	int				idx;
-	int				move;
+	int				move[2];
 }	t_list;
 
 int		ft_isalpha(int c);

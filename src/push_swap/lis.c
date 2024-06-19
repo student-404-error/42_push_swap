@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   passing_to_b.c                                     :+:      :+:    :+:   */
+/*   lis.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:28:43 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/18 22:08:29 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:20:52 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,39 +16,27 @@
 
 void	push_b(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk)
 {
-	int	cnt;
 	int	size;
-	int	range;
-	int	max_rotate;
-//	int	lis;
+	int	lis;
 
-	cnt = 10;
 	size = ft_lstsize(*a);
-//	lis = find_lis(*a, size);
-//	if (lis == size)
-//		return ;
-	range = size / cnt;
-	while (cnt)
+	lis = find_lis(*a, size);
+	if (lis == size)
+		return ;
+	while (ft_lstsize(*b) < size - lis)
 	{
-		max_rotate = 0;
-		while (ft_lstsize(*b) < size/* - lis*/)
+		if ((*a)->lis == -1)
 		{
-			if ((*a)->idx <= range /* &&(*a)->lis != -1*/)
-			{
-				move_push(b, a, b_stk, a_stk);
-				ft_printf("pb\n");
-			}
-			else
-			{
-				move_rotate(a, a_stk);
-				ft_printf("ra\n");
-			}
-			if (size == max_rotate || (*a_stk)->min > range)
-				break ;
-			max_rotate++;
+			move_rotate(a, a_stk, "ra");
+			continue ;
 		}
-		range += size / 10 + 1;
-		cnt--;
+		else
+		{
+			move_push(b, a, b_stk, a_stk);
+			ft_printf("pb\n");
+			if ((*b)->idx <= size / 2)
+				move_rotate(b, b_stk, "rb");
+		}
 	}
 }
 
