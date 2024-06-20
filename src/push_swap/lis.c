@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:28:43 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/20 17:14:14 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:14:04 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,20 @@ void	passing_to_b(t_list *a, t_list *b)
 
 	a_stk = ft_new_stack(a);
 	b_stk = ft_new_stack(b);
+	if (ft_lstsize(a) == 3)
+	{
+		three_argu(&a, &a_stk);
+		return ;
+	}
+	if (ft_lstsize(a) == 5)
+	{
+		move_push(&b, &a, &b_stk, &a_stk);
+		move_push(&b, &a, &b_stk, &a_stk);
+		ft_printf("pb\npb\n");
+		three_argu(&a, &a_stk);
+		sort(&a, &b, &a_stk, &b_stk);
+		return ;
+	}
 	push_b(&a, &b, &a_stk, &b_stk);
 	sort(&a, &b, &a_stk, &b_stk);
 }

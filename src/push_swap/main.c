@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:50:32 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/18 14:47:20 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:59:49 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,20 @@ void	ft_free(t_list *stack)
 
 int	main(int ac, char **av)
 {
-	t_list	*a = NULL;
-	t_list	*b = NULL;
+	t_list	*a;
+	t_list	*b;
 	t_list	*node;
-	int	i;
+	int		i;
 
+	a = NULL;
+	b = NULL;
 	if (ac < 2)
 	{
 		// prompt back
 		ft_printf("Error\n");
 		return (1);
 	}
+	/* 함수 따로 빼서 만들어야할 듯*/
 	i = 1;
 	while (i < ac)
 	{
@@ -53,7 +56,6 @@ int	main(int ac, char **av)
 		ft_lstadd_back(&a, node);
 		i++;
 	}
-	//find_lis(a, ft_lstsize(a));
 	find_index(a);
 	passing_to_b(a, b);
 	ft_free(a);

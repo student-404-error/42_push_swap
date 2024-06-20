@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:19:25 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/20 15:24:36 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:01:23 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		find_lis(t_list *a_list, int size);
 //void	push_swap(t_list **a_stack, t_list **b_stack);
 void	passing_to_b(t_list *a, t_list *b);
 void	sort(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk);
-void	move_swap(t_list **lst, t_stack **stk);
+void	move_swap(t_list **lst, t_stack **stk, char *title);
 void	move_ss(t_list **a_stack, t_list **b_stack);
 void	move_push(t_list **to_lst, t_list **fr_lst, t_stack **to, t_stack **fr);
 void	move_rotate(t_list **lst, t_stack **stack, char *title);
@@ -39,6 +39,7 @@ void	move_rr(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk);
 void	move_reverse_rotate(t_list **lst, t_stack **stack, char *title);
 void	move_rrr(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk);
 void	status_list_and_stack(t_list *lst, t_stack *stk, char *title);
+void	three_argu(t_list **a_list, t_stack **a_stk);
 t_stack	*ft_new_stack(t_list *lst);
 
 #endif

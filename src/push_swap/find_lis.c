@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 22:14:00 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/18 14:50:04 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:41:28 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,5 @@ int	find_lis(t_list *a_list, int size)
 		}
 		ptr = ptr->prev;
 	}
-	free(result);
-	return (length);
+	return (free(result), length);
 }

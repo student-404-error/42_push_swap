@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:01:30 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/16 19:36:01 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:36:17 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	update_stack(t_list *origin, int flag)
 			comp = origin->content * flag;
 		origin = origin->next;
 	}
-	return (comp * flag);	comp = origin->content;
+	return (comp * flag);
 }
 
 void	move_push(t_list **to_lst, t_list **fr_lst, t_stack **to, t_stack **fr)
