@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 22:34:09 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/19 14:28:46 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:25:35 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ void	move_rotate(t_list **lst, t_stack **stack, char *title)
 	first->next = NULL;
 	(*stack)->bottom = first;
 	ft_lstadd_back(lst, first);
-	ft_printf("%s\n", title);
+	if (*title != '\0')
+		ft_printf("%s\n", title);
 }
-/*
-void	move_rr(t_list **a_stack, t_list **b_stack)
+
+void	move_rr(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk)
 {
-	move_rotate(a_stack);
-	move_rotate(b_stack);
+	move_rotate(a, a_stk, "");
+	move_rotate(b, b_stk, "");
 }
-*/
 
 void	move_reverse_rotate(t_list **lst, t_stack **stack, char *title)
 {
@@ -52,11 +52,12 @@ void	move_reverse_rotate(t_list **lst, t_stack **stack, char *title)
 	(*stack)->top = last->next;
 	last->next = NULL;
 	(*stack)->bottom = last;
-	ft_printf("%s\n", title);
+	if (*title != '\0')
+		ft_printf("%s\n", title);
 }
-/*
-void	move_rrr(t_list **a_stack, t_list **b_stack)
+
+void	move_rrr(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk)
 {
-	move_reverse_rotate(a_stack);
-	move_reverse_rotate(b_stack);
-}*/
+	move_reverse_rotate(a, a_stk, "");
+	move_reverse_rotate(b, b_stk, "");
+}
