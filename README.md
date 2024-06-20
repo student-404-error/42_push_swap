@@ -47,4 +47,7 @@ Just writing my algo and thinking.
 - lis 사용함.
 - a에서 정렬해주고 끝내면 됨.
 - bonus만들어야함.
-
+## 2024-06-21 to-do
+- bonus part 구현
+- 입력 파트 구현
+- norminette 맞추기
