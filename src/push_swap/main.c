@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:50:32 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/20 17:59:49 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/20 19:34:36 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,9 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-void	ft_free(t_list *stack)
+void	ft_input()
 {
-	t_list	*node;
-
-	node = stack;
-	while (stack)
-	{
-		node = stack;
-		stack = stack->next;
-		free(node);
-	}
+	
 }
 
 int	main(int ac, char **av)
@@ -57,8 +49,6 @@ int	main(int ac, char **av)
 		i++;
 	}
 	find_index(a);
-	passing_to_b(a, b);
-	ft_free(a);
-	ft_free(b);
+	passing_to_b(&a, &b);
 	return (0);
 }
