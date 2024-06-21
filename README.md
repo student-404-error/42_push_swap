@@ -49,5 +49,8 @@ Just writing my algo and thinking.
 - bonus만들어야함.
 ## 2024-06-21 to-do
 - bonus part 구현
-- 입력 파트 구현
+- [x] 입력 파트 구현
+- norminette 맞추기
+## 2024-06-22 to-do
+- bonus제발 구현
 - norminette 맞추기
