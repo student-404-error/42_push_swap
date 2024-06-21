@@ -6,16 +6,16 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:46:50 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/04 14:40:30 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/21 13:47:02 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	n;
-	int	sign;
+	long	n;
+	int		sign;
 
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
