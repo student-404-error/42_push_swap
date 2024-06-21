@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:28:43 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/20 22:41:10 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/21 22:10:45 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,20 @@
 #include "push_swap.h"
 #include "ft_printf.h"
 
-void	ft_free(t_list *stack)
+void	ft_free(t_stack *a_stk, t_stack *b_stk)
 {
 	t_list	*node;
+	t_list	*tmp;
 
-	while (stack)
+	node = a_stk->top;
+	while (node)
 	{
-		node = stack;
-		stack = stack->next;
+		tmp = node->next;
 		free(node);
+		node = tmp;
 	}
+	free(a_stk);
+	free(b_stk);
 }
 
 void	push_b(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk)
@@ -59,6 +63,8 @@ void	passing_to_b(t_list **a, t_list **b)
 
 	a_stk = ft_new_stack(*a);
 	b_stk = ft_new_stack(*b);
+	if (check_sort(*a))
+		return (ft_free(a_stk, b_stk));
 	if (ft_lstsize(*a) == 3)
 		three_argu(a, &a_stk);
 	else if (ft_lstsize(*a) == 5)
@@ -71,7 +77,5 @@ void	passing_to_b(t_list **a, t_list **b)
 	push_b(a, b, &a_stk, &b_stk);
 	sort(a, b, &a_stk, &b_stk);
 	last_sort(a, &a_stk);
-	ft_free(a_stk->top);
-	free(a_stk);
-	free(b_stk);
+	ft_free(a_stk, b_stk);
 }
