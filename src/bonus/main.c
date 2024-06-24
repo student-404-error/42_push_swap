@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 #include "ft_printf.h"
 #include "libft.h"
 
@@ -97,8 +97,6 @@ int	main(int ac, char **av)
 	}
 	while (args[i])
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(args[i++])));
-	// gnl 사용해서 입력받기
-	// ra, rra, rb, rrb, rr, rrr, sa, sb, ss, pb, pa가 아니면 Error출력
 	checker(&a, &b);
 	return (free_str(args, ac), 0);
 }

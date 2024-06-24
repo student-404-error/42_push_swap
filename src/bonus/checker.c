@@ -18,21 +18,21 @@
 void	ft_error(char *msg)
 {
 	ft_printf("%s\n", msg);
-	exit();
+	exit(1);
 }
 void	checker(t_list **a, t_list **b)
 {
 	char	*line;
 
 	line = get_next_line(1);
-	if (line == "sa\n" || line == "sb\n" || line == "ss\n")
-		movement_swap(a);
-	else if (line == "ra\n" || line == "rb\n", || line == "rr\n")
-		movement_rotate(b);
-	else if (line == "rra\n" || line == "rrb\n" || line == "rrr\n")
-		movement_reverse_rotate(a, b);
-	else if (line == "pa\n" || line == "pb\n")
-		movement_push(a, b);
+	if (ft_strncmp(line, "sa", 2) || ft_strncmp(line, "sb", 2) || ft_strncmp(line, "ss", 2))
+		movement_swap(a, b, line);
+	else if (ft_strncmp(line, "ra", 2) || ft_strncmp(line, "rb", 2) || ft_strncmp(line, "rr", 2))
+		movement_rotate(a, b, line);
+	else if (ft_strncmp(line, "rra", 3) || ft_strncmp(line, "rrb", 3) || ft_strncmp(line, "rrr", 3))
+		movement_reverse_rotate(a, b, line);
+	else if (ft_strncmp(line, "pa", 2) || ft_strncmp(line, "pb", 2))
+		movement_push(a, b, line);
 	else
 		ft_error("Error");
 }

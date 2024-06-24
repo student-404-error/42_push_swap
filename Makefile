@@ -14,6 +14,8 @@ INCLUDES	=	./include
 
 SRC_DIR		=	./src/push_swap
 SRCS		=	$(wildcard $(SRC_DIR)/*.c)
+BONUS_DIR	=	./src/bonus
+BONUS_SRCS	=	$(wildcard $(BONUS_DIR)/*.c)
 
 LIBFTNAME	=	libftprintf.a
 LIBFT_PATH	=	./src/ft_printf
@@ -25,6 +27,7 @@ CC		=	cc
 CFLAGS		=	-Wall -Werror -Wextra -g -I$(INCLUDES)
 
 OBJS		=	$(SRCS:.c=.o)
+B_OBJS		=	$(BONUS_SRCS:.c=.o)
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
@@ -41,10 +44,18 @@ $(NAME)		:	$(OBJS)
 			@echo "$(GREEN) Build complete!$(RESET)"
 			@echo "$(GREEN)==========================$(RESET)"
 
+bonus		:	$(B_OBJS)
+			@echo "$(GREEN)==========================$(RESET)"
+			@echo "$(GREEN) Building $(BLUE)checker$(GREEN)...$(RESET)"
+			@make -C $(LIBFT_PATH)
+			@$(CC) $(CFLAGS) $(B_OBJS) $(LIBFT_PATH)/$(LIBFTNAME) -o checker
+			@echo "$(GREEN) Build complete!$(RESET)"
+			@echo "$(GREEN)==========================$(RESET)"
+
 clean		:
 			@echo "$(RED)===========$(WHITE)clean$(RED)===========$(RESET)"
 			@echo "$(RED)Cleaning up...$(RESET)"
-			@rm -f $(OBJS)
+			@rm -f $(OBJS) $(B_OBJS)
 			@cd $(LIBFT_PATH) && make clean
 			@echo "$(RED)Cleaning complete!$(RESET)"
 			@echo "$(RED)===========$(WHITE)clean$(RED)===========$(RESET)"
@@ -63,4 +74,5 @@ re		:	fclean	\
 .PHONY		:	all	\
 			clean	\
 			fclean	\
+			bonus	\
 			re

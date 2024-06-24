@@ -12,6 +12,7 @@
 
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
+# include "libft.h"
 
 void	checker(t_list **a, t_list **b);
 void	push(t_list **to_lst, t_list **fr_lst);

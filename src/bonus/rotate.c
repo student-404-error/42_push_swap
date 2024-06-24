@@ -45,7 +45,7 @@ void	reverse_rotate(t_list **lst)
 	last->next = NULL;
 }
 
-void	move_rrr(t_list **a, t_list **b)
+void	rrr(t_list **a, t_list **b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
