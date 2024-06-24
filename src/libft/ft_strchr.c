@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:50:59 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/05/22 11:03:57 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:02:04 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 char	*ft_strchr(const char *s, int c)
 {
+	if (s == NULL)
+		return (NULL);
 	while (c > 255)
 		c -= 256;
 	if (!*s && !c)
@@ -22,8 +24,6 @@ char	*ft_strchr(const char *s, int c)
 		s++;
 	if ((char) c == '\0')
 		return ((char *)s);
-	if (!*s)
-		return (NULL);
 	return ((char *)s);
 }
 /*

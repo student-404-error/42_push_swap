@@ -6,7 +6,7 @@
 /*   By: seong-ki <seong-ki@student.32.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 19:38:37 by seong-ki          #+#    #+#             */
-/*   Updated: 2023/06/22 19:59:23 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:31:21 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	movement_reverse_rotate(t_list **a, t_list **b, char *option)
 	else
 		rrr(a, b);
 }
+
 void	movement_push(t_list **a, t_list **b, char *option)
 {
 	if (ft_strncmp(option, "pa", 2))

@@ -42,6 +42,7 @@ void	move_rrr(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk);
 void	status_list_and_stack(t_list *lst, t_stack *stk, char *title);
 void	three_argu(t_list **a_list, t_stack **a_stk);
 void	last_sort(t_list **a, t_stack **a_stk);
+void	ft_free(t_stack *a_stk, t_stack *b_stk);
 t_stack	*ft_new_stack(t_list *lst);
 
 #endif

@@ -20,9 +20,6 @@ BONUS_SRCS	=	$(wildcard $(BONUS_DIR)/*.c)
 LIBFTNAME	=	libftprintf.a
 LIBFT_PATH	=	./src/ft_printf
 
-LIBFT_ONLY	=	libft.a
-LIBFT_ONLY_PATH	=	./src/libft
-
 CC		=	cc
 CFLAGS		=	-Wall -Werror -Wextra -g -I$(INCLUDES)
 
@@ -63,7 +60,7 @@ clean		:
 fclean		:	clean
 			@echo "$(RED)===========$(CYAN)fclean$(RED)===========$(RESET)"
 			@echo "$(RED)Deleting .a files...$(RESET)"
-			@rm -f $(NAME)
+			@rm -f $(NAME) checker
 			@cd $(LIBFT_PATH) && make fclean
 			@echo "$(RED)Delete complete!$(RESET)"
 			@echo "$(RED)===========$(CYAN)fclean$(RED)===========$(RESET)"
