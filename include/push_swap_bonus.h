@@ -6,7 +6,7 @@
 /*   By: seong-ki <seong-ki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 19:09:36 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/22 19:54:14 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/25 12:02:45 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	movement_swap(t_list **a, t_list **b, char *option);
 void	movement_rotate(t_list **a, t_list **b, char *option);
 void	movement_reverse_rotate(t_list **a, t_list **b, char *option);
 void	movement_push(t_list **a, t_list **b, char *option);
+void	find_index(t_list *a);
 
 #endif // !PUSH_SWAP_BONUS_H

@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:50:32 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/21 22:09:13 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/06/25 14:00:17 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	main(int ac, char **av)
 	}
 	while (args[i])
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(args[i++])));
+	find_index(a);
 	checker(&a, &b);
 	return (free_str(args, ac), 0);
 }
