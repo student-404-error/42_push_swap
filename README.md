@@ -54,3 +54,6 @@ Just writing my algo and thinking.
 ## 2024-06-22 to-do
 - bonus제발 구현
 - norminette 맞추기
+## 2024-06-25 to-do
+- 보너스 구현 거의 완료
+- norminette 거의 완료
