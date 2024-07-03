@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 18:46:23 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/21 21:25:19 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/07/03 18:00:08 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,28 @@ int	set_minimum_move(t_list *a, t_list *b)
 	return (cnt);
 }
 
+void	change_min_move(t_list *pt, int min_move[3])
+{
+	if (pt->move[0] * pt->move[1] < 0)
+	{
+		if (min_move[2] > ABS(pt->move[0]) + ABS(pt->move[1]))
+		{
+			min_move[0] = pt->move[0];
+			min_move[1] = pt->move[1];
+			min_move[2] = ABS(pt->move[0]) + ABS(pt->move[1]);
+		}
+	}
+	else
+	{
+		if (min_move[2] > MAX(ABS(pt->move[0]), ABS(pt->move[1])))
+		{
+			min_move[0] = pt->move[0];
+			min_move[1] = pt->move[1];
+			min_move[2] = MAX(ABS(pt->move[0]), ABS(pt->move[1]));
+		}
+	}
+}
+
 void	find_min_move(t_list **a, t_list **b, t_stack **a_stk, int min_move[3])
 {
 	t_list	*pt;
@@ -69,105 +91,8 @@ void	find_min_move(t_list **a, t_list **b, t_stack **a_stk, int min_move[3])
 			pt->move[1] = b_cnt - ft_lstsize(*b);
 		else
 			pt->move[1] = b_cnt;
-		if (pt->move[0] * pt->move[1] < 0)
-		{
-			if (min_move[2] > ABS(pt->move[0]) + ABS(pt->move[1]))
-			{
-				min_move[0] = pt->move[0];
-				min_move[1] = pt->move[1];
-				min_move[2] = ABS(pt->move[0]) + ABS(pt->move[1]);
-			}
-		}
-		else
-		{
-			if (min_move[2] > MAX(ABS(pt->move[0]), ABS(pt->move[1])))
-			{
-				min_move[0] = pt->move[0];
-				min_move[1] = pt->move[1];
-				min_move[2] = MAX(ABS(pt->move[0]), ABS(pt->move[1]));
-			}
-		}
+		change_min_move(pt, min_move);
 		pt = pt->next;
 		b_cnt++;
-	}
-}
-
-void	sort(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk)
-{
-	int	min_move[3];
-
-	while (ft_lstsize(*b) > 0)
-	{
-		find_min_move(a, b, a_stk, min_move);
-		if (min_move[0] * min_move[1] < 0)
-		{
-			if (min_move[0] < 0)
-			{
-				while (min_move[0] != 0)
-				{
-					move_reverse_rotate(a, a_stk, "rra");
-					min_move[0]++;
-				}
-				while (min_move[1] != 0)
-				{
-					move_rotate(b, b_stk, "rb");
-					min_move[1]--;
-				}
-			}
-			else
-			{
-				while (min_move[0] != 0)
-				{
-					move_rotate(a, a_stk, "ra");
-					min_move[0]--;
-				}
-				while (min_move[1] != 0)
-				{
-					move_reverse_rotate(b, b_stk, "rrb");
-					min_move[1]++;
-				}
-			}
-		}
-		else
-		{
-			if (min_move[0] + min_move[1] < 0)
-			{
-				while (min_move[0] != 0 && min_move[1] != 0)
-				{
-					move_rrr(a, b, a_stk, b_stk);
-					ft_printf("rrr\n");
-					min_move[0]++;
-					min_move[1]++;
-				}
-				while (min_move[MIN_FLAG(min_move[1], min_move[0])] != 0)
-				{
-					if (MIN_FLAG(min_move[1], min_move[0]))
-						move_reverse_rotate(b, b_stk, "rrb");
-					else
-						move_reverse_rotate(a, a_stk, "rra");
-					min_move[MIN_FLAG(min_move[1], min_move[0])]++;
-				}
-			}
-			else
-			{
-				while (min_move[0] != 0 && min_move[1] != 0)
-				{
-					move_rr(a, b, a_stk, b_stk);
-					ft_printf("rr\n");
-					min_move[0]--;
-					min_move[1]--;
-				}
-				while (min_move[MAX_FLAG(min_move[1], min_move[0])] != 0)
-				{
-					if (MAX_FLAG(min_move[1], min_move[0]))
-						move_rotate(b, b_stk, "rb");
-					else
-						move_rotate(a, a_stk, "ra");
-					min_move[MAX_FLAG(min_move[1], min_move[0])]--;
-				}
-			}
-		}
-		move_push(a, b, a_stk, b_stk);
-		ft_printf("pa\n");
 	}
 }

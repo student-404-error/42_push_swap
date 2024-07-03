@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 22:34:09 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/20 15:25:35 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:13:22 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	move_rr(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk)
 {
 	move_rotate(a, a_stk, "");
 	move_rotate(b, b_stk, "");
+	ft_printf("rr\n");
 }
 
 void	move_reverse_rotate(t_list **lst, t_stack **stack, char *title)
@@ -60,4 +61,5 @@ void	move_rrr(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk)
 {
 	move_reverse_rotate(a, a_stk, "");
 	move_reverse_rotate(b, b_stk, "");
+	ft_printf("rrr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:19:25 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/21 20:37:57 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:57:53 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,21 @@ typedef struct s_stack
 	t_list	*bottom;
 	int		max;
 	int		min;
-}	t_stack;
+}				t_stack;
+
+typedef struct s_stacks
+{
+	t_stack	**a_stk;
+	t_stack	**b_stk;
+}				t_stacks;
+typedef struct s_lists
+{
+	t_list	**a;
+	t_list	**b;
+}				t_lists;
 void	find_index(t_list *a);
 int		find_lis(t_list *a_list, int size);
-//void	push_swap(t_list **a_stack, t_list **b_stack);
+void	find_min_move(t_list **a, t_list **b, t_stack **a_stk, int min_move[3]);
 int		check_sort(t_list *a);
 void	passing_to_b(t_list **a, t_list **b);
 void	sort(t_list **a, t_list **b, t_stack **a_stk, t_stack **b_stk);
