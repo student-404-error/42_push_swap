@@ -6,7 +6,7 @@
 /*   By: seong-ki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:50:32 by seong-ki          #+#    #+#             */
-/*   Updated: 2024/06/25 14:00:17 by seong-ki         ###   ########.fr       */
+/*   Updated: 2024/07/05 17:13:16 by seong-ki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,14 @@ int	main(int ac, char **av)
 	i = 0;
 	if (ac < 2)
 		return (-1);
+	else if (av[1][0] == 0)
+		return (ft_printf("Error\n"), 1);
 	else if (ac == 2)
 		args = ft_split(av[1], ' ');
 	else
 		args = ++av;
-	if (!check_argument(i, args))
-	{
-		ft_printf("Error\n");
-		return (free_str(args, ac), 1);
-	}
+	if (ft_isblank(av[1]) || !check_argument(i, args))
+		return (ft_printf("Error\n"), free_str(args, ac), 1);
 	while (args[i])
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(args[i++])));
 	find_index(a);
